@@ -1,0 +1,57 @@
+/* styles.css */
+
+/* Estilo para o body */
+body {
+    font-family: Arial, sans-serif; /* Define a fonte para todo o texto */
+    background-color: #f0f0f0; /* Define a cor de fundo */
+    margin: 0; /* Remove as margens padrão */
+    padding: 0; /* Remove os preenchimentos padrão */
+}
+
+/* Estilo para o cabeçalho (h1) */
+h1 {
+    color: #333; /* Define a cor do texto */
+    text-align: center; /* Centraliza o texto */
+}
+
+/* Estilo para o formulário */
+form {
+    max-width: 400px; /* Define a largura máxima do formulário */
+    margin: 20px auto; /* Centraliza o formulário na página */
+    padding: 20px; /* Adiciona algum espaço interno ao redor do formulário */
+    background-color: #fff; /* Define a cor de fundo do formulário */
+    border-radius: 8px; /* Adiciona bordas arredondadas ao formulário */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra suave */
+}
+
+/* Estilo para os campos de entrada */
+input[type="text"] {
+    width: 100%; /* Ocupa toda a largura disponível */
+    padding: 10px; /* Adiciona algum espaço interno ao redor do campo */
+    margin-bottom: 10px; /* Adiciona algum espaço abaixo do campo */
+    border: 1px solid #ccc; /* Adiciona uma borda */
+    border-radius: 4px; /* Adiciona bordas arredondadas */
+    box-sizing: border-box; /* Garante que o preenchimento não aumente a largura do campo */
+}
+
+/* Estilo para o botão */
+button {
+    width: 100%; /* Ocupa toda a largura disponível */
+    padding: 10px; /* Adiciona algum espaço interno ao redor do botão */
+    background-color: #007bff; /* Define a cor de fundo */
+    color: #fff; /* Define a cor do texto */
+    border: none; /* Remove a borda */
+    border-radius: 4px; /* Adiciona bordas arredondadas */
+    cursor: pointer; /* Muda o cursor ao passar por cima */
+}
+
+/* Estilo para a lista de solicitações */
+ul {
+    list-style-type: none; /* Remove os marcadores da lista */
+    padding: 0; /* Remove o preenchimento padrão */
+}
+
+/* Estilo para os itens da lista */
+li {
+    margin-bottom: 5px; /* Adiciona algum espaço abaixo de cada item */
+}

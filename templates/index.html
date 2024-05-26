@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitações de Doação</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 20px); /* Largura do campo menos 20px de margem para a direita */
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+            button[type="submit"]:hover {
+                background-color: #0056b3;
+            }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Solicitações de Doação</h1>
+        <form id="solicitacaoForm">
+            <label for="instituicao">Instituição:</label>
+            <input type="text" id="instituicao" name="instituicao" required>
+            <br>
+            <label for="descricao">Descrição:</label>
+            <input type="text" id="descricao" name="descricao" required>
+            <br>
+            <button type="submit">Adicionar Solicitação</button>
+        </form>
+        <ul id="solicitacoes"></ul>
+    </div>
+    <script>
+        document.getElementById('solicitacaoForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const instituicao = document.getElementById('instituicao').value;
+            const descricao = document.getElementById('descricao').value;
+            fetch('/solicitacao', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ instituicao, descricao })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message); // Exibe a mensagem de confirmação
+                    carregarSolicitacoes();
+                    // Limpa os campos do formulário
+                    document.getElementById('instituicao').value = '';
+                    document.getElementById('descricao').value = '';
+                });
+        });
+
+        function carregarSolicitacoes() {
+            fetch('/solicitacoes')
+                .then(response => response.json())
+                .then(data => {
+                    const solicitacoesElement = document.getElementById('solicitacoes');
+                    solicitacoesElement.innerHTML = '';
+                    data.forEach(solicitacao => {
+                        const li = document.createElement('li');
+                        li.textContent = `${solicitacao.instituicao}: ${solicitacao.descricao}`;
+                        solicitacoesElement.appendChild(li);
+                    });
+                });
+        }
+
+        carregarSolicitacoes();
+    </script>
+</body>
+</html>
